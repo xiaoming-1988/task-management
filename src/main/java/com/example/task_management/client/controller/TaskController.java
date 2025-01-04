@@ -1,9 +1,10 @@
-package com.example.task_management.controller;
+package com.example.task_management.client.controller;
 
 import com.example.task_management.dto.SimplePage;
 import com.example.task_management.dto.TaskDto;
 import com.example.task_management.entity.Task;
 import com.example.task_management.service.TaskService;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -56,7 +57,7 @@ public class TaskController {
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TaskDto createTask(@RequestBody TaskDto taskDto) {
+    public TaskDto createTask(@Valid @RequestBody TaskDto taskDto) {
         Task task = new Task();
         BeanUtils.copyProperties(taskDto, task);
 
@@ -66,7 +67,7 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public TaskDto createTask(@RequestBody TaskDto newTaskDto,  @PathVariable Long id) {
+    public TaskDto createTask(@Valid @RequestBody TaskDto newTaskDto, @PathVariable Long id) {
         Task updatedTask =
                 taskService
                         .findTaskById(id)
