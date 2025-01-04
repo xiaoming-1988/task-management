@@ -6,13 +6,10 @@ import com.example.task_management.entity.Task;
 import com.example.task_management.service.TaskService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/task/")
@@ -58,6 +55,7 @@ public class TaskController {
         return new TaskDto(task);
     }
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public TaskDto createTask(@RequestBody TaskDto taskDto) {
         Task task = new Task();
         BeanUtils.copyProperties(taskDto, task);
@@ -74,10 +72,11 @@ public class TaskController {
                         .findTaskById(id)
                         .map(
                                 taskInDb -> {
-                                    // only name, description and done can be changed
+                                    // only name, description and done can be changed for now
                                     taskInDb.setName(newTaskDto.getName());
                                     taskInDb.setDone(newTaskDto.isDone());
                                     taskInDb.setDescription(newTaskDto.getDescription());
+                                    taskInDb.setPriority(newTaskDto.getPriority());
 
                                     return taskService.updateTask(taskInDb);
                                 }
