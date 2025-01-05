@@ -39,7 +39,7 @@ public class CommonExceptionHandler extends ResponseEntityExceptionHandler {
     ResponseEntity<Object> handleControllerException(HttpServletRequest req, NoSuchTaskException exception) {
         ErrorResponse<String> error
                 = new ErrorResponse<>(
-                "Data Validation Failed",
+                "Task not fund",
                 Collections.singletonList(exception.getMessage())
         );
 

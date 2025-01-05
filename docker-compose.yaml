@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  task-app:
+    image: 'task-management-server:latest'
+    build:
+      context: .
+    container_name: task-server
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=task_management
+
+    ports:
+      - "8080:8080"
+
+  db:
+    image: postgres
+    container_name: task-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=task_management
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
