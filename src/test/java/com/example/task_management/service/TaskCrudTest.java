@@ -1,24 +1,20 @@
-package com.example.task_management.controller;
+package com.example.task_management.service;
 
 
-import com.example.task_management.TaskManagementApplication;
 import com.example.task_management.entity.Task;
-import com.example.task_management.service.TaskService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.test.context.ContextConfiguration;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ContextConfiguration(classes= TaskManagementApplication.class)
-public class TaskControllerTest {
+public class TaskCrudTest {
 
     @Autowired
     private TaskService taskService;
@@ -29,6 +25,7 @@ public class TaskControllerTest {
         original.setName("test1");
         original.setType("A");
         original.setDone(false);
+        original.setPriority(Task.PRIORITY.NORMAL);
         original.setDescription("just for test");
 
 

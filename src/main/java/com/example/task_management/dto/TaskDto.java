@@ -1,7 +1,6 @@
 package com.example.task_management.dto;
 
 import com.example.task_management.entity.Task;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -26,7 +25,7 @@ public class TaskDto {
     private boolean done;
 
     @NotNull(message = "priority is required")
-    private Long priority;
+    private Task.PRIORITY priority;
 
     private LocalDateTime created;
 

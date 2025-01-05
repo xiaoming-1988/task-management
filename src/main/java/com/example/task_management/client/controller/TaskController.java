@@ -1,5 +1,6 @@
 package com.example.task_management.client.controller;
 
+import com.example.task_management.client.exception.NoSuchTaskException;
 import com.example.task_management.dto.SimplePage;
 import com.example.task_management.dto.TaskDto;
 import com.example.task_management.entity.Task;
@@ -51,7 +52,7 @@ public class TaskController {
     public TaskDto getTaskById(@PathVariable Long id) {
         Task task =
                 taskService.findTaskById(id)
-                        .orElseThrow();
+                        .orElseThrow(NoSuchTaskException::new);
 
         return new TaskDto(task);
     }
@@ -81,7 +82,7 @@ public class TaskController {
 
                                     return taskService.updateTask(taskInDb);
                                 }
-                        ).orElseThrow();
+                        ).orElseThrow(NoSuchTaskException::new);
 
         return new TaskDto(updatedTask);
     }

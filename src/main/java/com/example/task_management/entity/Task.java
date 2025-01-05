@@ -1,7 +1,6 @@
 package com.example.task_management.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,11 +22,16 @@ public class Task {
 
     private boolean done;
 
-    private Long priority;
+    @Enumerated(EnumType.STRING)
+    private PRIORITY priority;
 
     private LocalDateTime created;
 
     private LocalDateTime updated;
 
     private String description;
+
+    public enum PRIORITY {
+        LOW, NORMAL, URGENT
+    }
 }
