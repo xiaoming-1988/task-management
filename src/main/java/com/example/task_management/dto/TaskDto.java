@@ -1,6 +1,7 @@
 package com.example.task_management.dto;
 
 import com.example.task_management.entity.Task;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -15,11 +16,11 @@ import java.time.LocalDateTime;
 public class TaskDto {
     private Long id;
 
-    @NotEmpty(message = "name is required")
+    @NotBlank(message = "name is required")
     @Size(min = 1, max = 64, message = "task name should be between 1 and 64 characters")
     private String name;
 
-    @NotEmpty(message = "type is required")
+    @NotBlank(message = "type is required")
     private String type;
 
     private boolean done;

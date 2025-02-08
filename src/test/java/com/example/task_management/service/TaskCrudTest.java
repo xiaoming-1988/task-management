@@ -12,7 +12,6 @@ import org.springframework.data.domain.Sort;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 public class TaskCrudTest {
 
@@ -27,6 +26,7 @@ public class TaskCrudTest {
         original.setDone(false);
         original.setPriority(Task.PRIORITY.NORMAL);
         original.setDescription("just for test");
+//        original.setId(999L);
 
 
         // create

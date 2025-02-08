@@ -33,11 +33,14 @@ docker compose up
 
 - To connect to the db, and run the init sql [schema.sql](./src/test/resources/schema.sql)
 
-- Now the backend api server should be up to use, try the curl below
+- Now the backend api server should be up to use, try the curl below or the
+swagger ui [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
 
 ```bash
 curl http://localhost:8080/api/v1/task/all 
 ```
+
 
 - you can start up the frontend app to use the webpage from repository [task-app](https://github.com/xiaoming-1988/task-app)
 
