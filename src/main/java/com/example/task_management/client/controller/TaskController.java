@@ -69,7 +69,7 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public TaskDto createTask(@Valid @RequestBody TaskDto newTaskDto, @PathVariable Long id) {
+    public TaskDto updateTask(@Valid @RequestBody TaskDto newTaskDto, @PathVariable Long id) {
         Task updatedTask =
                 taskService
                         .findTaskById(id)
@@ -89,7 +89,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/{id}")
-    void deleteEmployee(@PathVariable Long id) {
+    void deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
     }
 
