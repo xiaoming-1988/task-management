@@ -62,7 +62,6 @@ public class TaskController {
         Task task = new Task();
         BeanUtils.copyProperties(taskDto, task);
 
-        taskDto.setId(null);
         return new TaskDto(
                 taskService.createNewTask(task)
         );

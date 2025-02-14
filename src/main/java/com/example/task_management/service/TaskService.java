@@ -29,6 +29,7 @@ public class TaskService {
     }
 
     public Task createNewTask(Task task) {
+        task.setId(null);
         task.setCreated(LocalDateTime.now());
         task.setUpdated(LocalDateTime.now());
         return taskRepository.save(task);
